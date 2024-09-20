@@ -27,9 +27,9 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public List<CardDto> getByIdBrandCard(Integer id) {
+    public List<CardDto> getByIdBrandCard(Integer idBrandCard) {
         return iCardRepository
-                .getByIdBrandCard(id);
+                .getByIdBrandCard(idBrandCard);
     }
 
     @Override

@@ -11,7 +11,7 @@ public interface ICardService {
 
     Optional<CardDto> getById(int id);
 
-    List<CardDto> getByIdBrandCard(Integer id);
+    List<CardDto> getByIdBrandCard(Integer idBrandCard);
 
     List<CardDto> getCardsByPriceLessThan(Double price);
 
