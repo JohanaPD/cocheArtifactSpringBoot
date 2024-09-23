@@ -40,7 +40,7 @@ public class CardRepository implements ICardRepository {
     public List<CardDto> getByIdBrandCard(Integer id) {
         return iCardMapper
                 .toCardDtoList(iCardCrudRepository
-                        .findAllByBrandCardId(id));
+                        .findAllBybrandCardId(id));
     }
 
     @Override

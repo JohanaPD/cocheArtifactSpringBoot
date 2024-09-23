@@ -51,6 +51,10 @@ public class CardService implements ICardService {
 
     @Override
     public Optional<CardDto> update(CardDto cardDto) {
+        System.out.println(cardDto.getId_vehiculo());
+        if (cardDto.getId_vehiculo() == null) {
+            throw new IllegalArgumentException("El ID del vehículo no puede ser nulo");
+        }
         if (iCardRepository
                 .getById(cardDto
                         .getId_vehiculo())

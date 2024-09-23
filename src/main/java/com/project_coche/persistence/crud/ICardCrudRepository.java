@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ICardCrudRepository extends JpaRepository<CardEntity, Integer> {
 
-    List<CardEntity> findAllByBrandCardId(Integer id);
+    List<CardEntity> findAllBybrandCardId(Integer id);
 
     List<CardEntity> findAllByPriceLessThan(double precio);
 }
