@@ -7,14 +7,14 @@ import lombok.Setter;
 @Setter
 public class CardDto {
     private Integer id_vehiculo;
-    private Integer marca_coche_id;
+    private Integer brandCardId;
     private String color;
-    private String serial_chasis;
-    private double anyo_modelo;
+    private String serial;
+    private double anyo_mod;
     private double caballos_fuerza;
     private Integer n_puertas;
     private String referencia;
-    private double precio;
+    private double price;
     private double cilindraje;
     private String transmision;
     private String tipo_combustible;
@@ -23,5 +23,4 @@ public class CardDto {
     private String direccion;
     private String categoria;
     private String ruta_imagen;
-
 }

@@ -44,9 +44,9 @@ public class CardRepository implements ICardRepository {
     }
 
     @Override
-    public List<CardDto> getCardsByPriceLessThan(Double price) {
+    public List<CardDto> getCardsByPriceLessThan(double price) {
 
-        return iCardMapper.toCardDtoList(iCardCrudRepository.findAllbyPriceLessThan(price));
+        return iCardMapper.toCardDtoList(iCardCrudRepository.findAllByPriceLessThan(price));
     }
 
     @Override

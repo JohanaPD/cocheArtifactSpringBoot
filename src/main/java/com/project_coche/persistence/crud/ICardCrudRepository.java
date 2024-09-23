@@ -9,5 +9,5 @@ public interface ICardCrudRepository extends JpaRepository<CardEntity, Integer> 
 
     List<CardEntity> findAllByBrandCardId(Integer id);
 
-    List<CardEntity> findAllbyPriceLessThan(Double price);
+    List<CardEntity> findAllByPriceLessThan(double precio);
 }

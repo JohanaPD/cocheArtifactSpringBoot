@@ -4,6 +4,7 @@ import com.project_coche.domain.dto.CardDto;
 import com.project_coche.domain.dto.CustomerDto;
 import com.project_coche.domain.useCase.ICardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping(path = "/cards")
 public class CardController {
 
+    @Autowired
     private final ICardService cardService;
 
 
@@ -24,18 +26,21 @@ public class CardController {
                 .body(cardService.getAll());
     }
 
-    @GetMapping(path = "/{idBrandCard}")
+    @GetMapping(path = "/brandCard/{idBrandCard}")
     public ResponseEntity<List<CardDto>> getbyIdBrandCard(@PathVariable("idBrandCard") Integer idBrandCard) {
         return ResponseEntity.ok(cardService.getByIdBrandCard(idBrandCard));
     }
 
 
-
-    @GetMapping(path = "/{id_vehiculo}")
-    public ResponseEntity<CardDto> getCardById(@PathVariable("id_vehiculo") Integer id) {
-        return ResponseEntity.of(cardService.getById(id));
+    @GetMapping(path = "/carId/{carId}")
+    public ResponseEntity<CardDto> getCardById(@PathVariable("carId") Integer carId) {
+        return ResponseEntity.of(cardService.getById(carId));
     }
 
+    @GetMapping(path = "/price/{priceCard}")
+    public ResponseEntity<List<CardDto>> getCarsByPriceLessThan(@PathVariable double priceCard) {
+        return ResponseEntity.ok(cardService.getCardsByPriceLessThan(priceCard));
+    }
 
 
     @PostMapping()
@@ -51,7 +56,7 @@ public class CardController {
 
     @DeleteMapping(path = "/{id_vehiculo}")
     public ResponseEntity<Boolean> deleteCard(@PathVariable Integer id_vehiculo) {
-        return  new ResponseEntity<>(this.cardService.delete(id_vehiculo)? HttpStatus.OK : HttpStatus.NOT_FOUND );
+        return new ResponseEntity<>(this.cardService.delete(id_vehiculo) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
 

@@ -3,6 +3,8 @@ package com.project_coche.domain.service;
 import com.project_coche.domain.dto.CardDto;
 import com.project_coche.domain.repository.ICardRepository;
 import com.project_coche.domain.useCase.ICardService;
+import com.project_coche.persistence.entities.CardEntity;
+import com.project_coche.persistence.mapper.ICardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class CardService implements ICardService {
 
     private final ICardRepository iCardRepository;
+    private final ICardMapper icardMapper;
 
 
     @Override
@@ -22,7 +25,7 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public Optional<CardDto> getById(int id) {
+    public Optional<CardDto> getById(Integer id) {
         return iCardRepository.getById(id);
     }
 
@@ -33,14 +36,17 @@ public class CardService implements ICardService {
     }
 
     @Override
-    public List<CardDto> getCardsByPriceLessThan(Double price) {
+    public List<CardDto> getCardsByPriceLessThan(double price) {
         return iCardRepository
                 .getCardsByPriceLessThan(price);
     }
 
     @Override
     public CardDto save(CardDto cardDto) {
-        return iCardRepository.save(cardDto);
+        CardEntity cardEntity =icardMapper.toCardEntity(cardDto) ;
+        System.out.println("Price a persistir: " + cardEntity.getPrice());
+        return iCardRepository
+                .save(cardDto);
     }
 
     @Override

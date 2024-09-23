@@ -9,11 +9,11 @@ public interface ICardService {
 
     List<CardDto> getAll();
 
-    Optional<CardDto> getById(int id);
+    Optional<CardDto> getById(Integer id);
 
     List<CardDto> getByIdBrandCard(Integer idBrandCard);
 
-    List<CardDto> getCardsByPriceLessThan(Double price);
+    List<CardDto> getCardsByPriceLessThan(double price);
 
     CardDto save(CardDto CardDto);
 

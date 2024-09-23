@@ -12,7 +12,7 @@ public interface ICardRepository {
 
     List<CardDto> getByIdBrandCard(Integer id);
 
-    List<CardDto> getCardsByPriceLessThan(Double price);
+    List<CardDto> getCardsByPriceLessThan(double price);
 
     CardDto save(CardDto cardDto);
 
