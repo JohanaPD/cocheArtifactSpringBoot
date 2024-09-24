@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -22,6 +24,9 @@ public class CustomerEntity {
     private Integer active;
     @Column(name = "contrasenya")
     private String password;
+
+    @OneToMany(mappedBy = "customerEntity")
+    private List<PurchaseEntity> purchaseEntity;
 
     @Override
     public String toString() {

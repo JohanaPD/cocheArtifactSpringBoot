@@ -4,10 +4,8 @@ import com.project_coche.domain.dto.CardDto;
 import com.project_coche.domain.repository.ICardRepository;
 
 import com.project_coche.persistence.crud.ICardCrudRepository;
-import com.project_coche.persistence.entities.CardEntity;
-import com.project_coche.persistence.mapper.ICardMapper;
+import com.project_coche.persistence.mapper.ICarMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,12 +17,12 @@ public class CardRepository implements ICardRepository {
 
     private final ICardCrudRepository iCardCrudRepository;
 
-    private final ICardMapper iCardMapper;
+    private final ICarMapper iCarMapper;
 
     @Override
     public List<CardDto> getAll() {
 
-        return iCardMapper
+        return iCarMapper
                 .toCardDtoList(iCardCrudRepository
                         .findAll());
     }
@@ -33,12 +31,12 @@ public class CardRepository implements ICardRepository {
     public Optional<CardDto> getById(Integer id) {
         return iCardCrudRepository
                 .findById(id)
-                .map(iCardMapper::toCardDto);
+                .map(iCarMapper::toCardDto);
     }
 
     @Override
     public List<CardDto> getByIdBrandCard(Integer id) {
-        return iCardMapper
+        return iCarMapper
                 .toCardDtoList(iCardCrudRepository
                         .findAllBybrandCardId(id));
     }
@@ -46,14 +44,14 @@ public class CardRepository implements ICardRepository {
     @Override
     public List<CardDto> getCardsByPriceLessThan(double price) {
 
-        return iCardMapper.toCardDtoList(iCardCrudRepository.findAllByPriceLessThan(price));
+        return iCarMapper.toCardDtoList(iCardCrudRepository.findAllByPriceLessThan(price));
     }
 
     @Override
     public CardDto save(CardDto brandCardDto) {
-        return iCardMapper
+        return iCarMapper
                 .toCardDto(iCardCrudRepository
-                        .save(iCardMapper
+                        .save(iCarMapper
                                 .toCardEntity(brandCardDto)));
     }
 

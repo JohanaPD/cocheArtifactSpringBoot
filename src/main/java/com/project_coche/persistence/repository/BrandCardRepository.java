@@ -3,7 +3,7 @@ package com.project_coche.persistence.repository;
 import com.project_coche.domain.dto.BrandCardDto;
 import com.project_coche.domain.repository.IBrandCardRepository;
 import com.project_coche.persistence.crud.IBrandCardCRUDRepository;
-import com.project_coche.persistence.entities.BrandCardEntity;
+import com.project_coche.persistence.entities.BrandCarEntity;
 import com.project_coche.persistence.mapper.IBrandCardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -32,8 +32,8 @@ public class BrandCardRepository implements IBrandCardRepository {
 
     @Override
     public BrandCardDto save(BrandCardDto brandCardDto) {
-        BrandCardEntity brandCardEntity = iBrandCardMapper.toBrandcardEntity(brandCardDto);
-        return iBrandCardMapper.toBrandCardDto(iBrandCardCRUDRepository.save(brandCardEntity));
+        BrandCarEntity brandCarEntity = iBrandCardMapper.toBrandcardEntity(brandCardDto);
+        return iBrandCardMapper.toBrandCardDto(iBrandCardCRUDRepository.save(brandCarEntity));
     }
 
     @Override

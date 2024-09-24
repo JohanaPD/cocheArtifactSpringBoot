@@ -1,13 +1,13 @@
 package com.project_coche.persistence.crud;
 
-import com.project_coche.persistence.entities.CardEntity;
+import com.project_coche.persistence.entities.CarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ICardCrudRepository extends JpaRepository<CardEntity, Integer> {
+public interface ICardCrudRepository extends JpaRepository<CarEntity, Integer> {
 
-    List<CardEntity> findAllBybrandCardId(Integer id);
+    List<CarEntity> findAllBybrandCardId(Integer id);
 
-    List<CardEntity> findAllByPriceLessThan(double precio);
+    List<CarEntity> findAllByPriceLessThan(double precio);
 }

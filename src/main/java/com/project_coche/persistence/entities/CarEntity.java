@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "coche")
 @Getter
 @Setter
-public class CardEntity {
+public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cardId;
@@ -35,6 +37,9 @@ public class CardEntity {
 
     @ManyToOne
     @JoinColumn(name = "marca_coche_id", insertable = false, updatable = false)
-    private BrandCardEntity brandCardEntity;
+    private BrandCarEntity brandCarEntity;
+
+    @OneToMany(mappedBy = "carEntity")
+    private List<PurchaseCarEntity> purchaseCarEntity;
 
 }

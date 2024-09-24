@@ -1,7 +1,7 @@
 package com.project_coche.persistence.mapper;
 
 import com.project_coche.domain.dto.BrandCardDto;
-import com.project_coche.persistence.entities.BrandCardEntity;
+import com.project_coche.persistence.entities.BrandCarEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,13 +12,13 @@ import java.util.List;
 public interface IBrandCardMapper {
     @Mapping(source = "id", target = "id")
     @Mapping(source = "description" , target = "description")
-    BrandCardDto toBrandCardDto(BrandCardEntity brandCardEntity);
+    BrandCardDto toBrandCardDto(BrandCarEntity brandCarEntity);
 
     @InheritInverseConfiguration
     @Mapping(target = "cardEntities", ignore = true)
-    BrandCardEntity toBrandcardEntity(BrandCardDto brandCardDto) ;
+    BrandCarEntity toBrandcardEntity(BrandCardDto brandCardDto) ;
 
-    List<BrandCardDto> toBrandsCardsDto(List<BrandCardEntity> marcasCocheentities);
-    List<BrandCardEntity> toBrandsCardsEntities(List<BrandCardDto> marcasCochepojos);
+    List<BrandCardDto> toBrandsCardsDto(List<BrandCarEntity> marcasCocheentities);
+    List<BrandCarEntity> toBrandsCardsEntities(List<BrandCardDto> marcasCochepojos);
 
 }

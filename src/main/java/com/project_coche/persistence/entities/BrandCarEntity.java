@@ -10,14 +10,14 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "marca_coche")
-public class BrandCardEntity {
+public class BrandCarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "descripcion")
     private String description;
 
-    @OneToMany(mappedBy = "brandCardEntity", orphanRemoval = true)
-    private List<CardEntity> cardEntities = new ArrayList<>();
+    @OneToMany(mappedBy = "brandCarEntity", orphanRemoval = true)
+    private List<CarEntity> cardEntities = new ArrayList<>();
 
 }
