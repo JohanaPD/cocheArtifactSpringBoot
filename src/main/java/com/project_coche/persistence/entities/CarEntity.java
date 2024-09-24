@@ -13,6 +13,7 @@ import java.util.List;
 public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vehiculo")
     private Integer cardId;
     @Column(name = "marca_coche_id")
     private Integer brandCardId;
