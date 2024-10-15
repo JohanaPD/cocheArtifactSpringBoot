@@ -1,10 +1,12 @@
 package com.project_coche.domain.service;
 
 import com.project_coche.domain.dto.CustomerDto;
-import com.project_coche.domain.dto.ResponsiveCustomerDto;
+import com.project_coche.domain.dto.ResponseCustomerDto;
 import com.project_coche.domain.repository.ICustomerRepository;
 import com.project_coche.domain.useCase.ICustomerService;
 import com.project_coche.exceptions.EmailValidationException;
+import com.project_coche.security.Roles;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class CustomerService implements ICustomerService {
 
     private final ICustomerRepository customerRepository;
+   // private final BCryptPasswordEncoder passwordEncoder; // Inyectar el codificador
 
     @Override
     public List<CustomerDto> getAll() {
@@ -43,17 +46,19 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public ResponsiveCustomerDto save(CustomerDto customerDto) {
+    public ResponseCustomerDto save(CustomerDto customerDto) {
 
         if (!customerDto.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
             throw new EmailValidationException();
         }
         String password = generatePassword(8);
+       // customerDto.setPassword(passwordEncoder.encode(password));// revisa esto
         customerDto.setPassword(password);
         customerDto.setActive(1);
+        customerDto.setRol(Roles.CUSTOMER);
         customerRepository.save(customerDto);
-        return new ResponsiveCustomerDto(password);
+        return new ResponseCustomerDto(password);
     }
 
     @Override

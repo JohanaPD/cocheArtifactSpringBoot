@@ -1,7 +1,7 @@
 package com.project_coche.domain.useCase;
 
 import com.project_coche.domain.dto.CustomerDto;
-import com.project_coche.domain.dto.ResponsiveCustomerDto;
+import com.project_coche.domain.dto.ResponseCustomerDto;
 import com.project_coche.exceptions.EmailValidationException;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public interface ICustomerService {
 
     Optional<CustomerDto> update(CustomerDto customerDto);
 
-    ResponsiveCustomerDto save(CustomerDto customerDto) throws EmailValidationException;
+    ResponseCustomerDto save(CustomerDto customerDto) throws EmailValidationException;
 
     boolean delete(String idCustomerDto);
 

@@ -3,11 +3,15 @@ package com.project_coche.domain.service;
 import com.project_coche.domain.dto.CardDto;
 import com.project_coche.domain.repository.ICardRepository;
 import com.project_coche.domain.useCase.ICardService;
+import com.project_coche.exceptions.UnauthorizadException;
 import com.project_coche.persistence.entities.CarEntity;
 import com.project_coche.persistence.mapper.ICarMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +24,18 @@ public class CardService implements ICardService {
 
 
     @Override
-    public List<CardDto> getAll() {
+    public List<CardDto> getAll() throws UnauthorizadException {
+      /*  //Aquí puedo llamar roles
+        Collection<? extends GrantedAuthority> listaRoles = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+
+        if(listaRoles.stream().noneMatch(role -> String.valueOf(role).equalsIgnoreCase("CUSTOMER"))){
+            throw  new UnauthorizadException();
+        }
+        //Validación por nivel de servicio
+        if(listaRoles.stream().anyMatch(role -> String.valueOf(role).equalsIgnoreCase("Junior"))){
+            //
+        }*/
+
         return iCardRepository.getAll();
     }
 

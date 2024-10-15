@@ -1,7 +1,7 @@
 package com.project_coche.controller;
 
 import com.project_coche.domain.dto.CustomerDto;
-import com.project_coche.domain.dto.ResponsiveCustomerDto;
+import com.project_coche.domain.dto.ResponseCustomerDto;
 import com.project_coche.domain.useCase.ICustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public ResponseEntity<ResponsiveCustomerDto> saveCustomer(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<ResponseCustomerDto> saveCustomer(@RequestBody CustomerDto customerDto) {
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(customerService.save(customerDto));
     }

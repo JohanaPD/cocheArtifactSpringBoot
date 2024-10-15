@@ -3,6 +3,7 @@ package com.project_coche.controller;
 import com.project_coche.domain.dto.CardDto;
 import com.project_coche.domain.dto.CustomerDto;
 import com.project_coche.domain.useCase.ICardService;
+import com.project_coche.exceptions.UnauthorizadException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class CardController {
 
 
     @GetMapping()
-    public ResponseEntity<List<CardDto>> getAllCards() {
+    public ResponseEntity<List<CardDto>> getAllCards() throws UnauthorizadException {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(cardService.getAll());
     }

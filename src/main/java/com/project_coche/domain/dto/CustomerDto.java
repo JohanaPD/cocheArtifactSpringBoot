@@ -12,6 +12,7 @@ public class CustomerDto {
     private double numberPhone;
     private Integer active;
     private String password;
+    private String rol;
 
     @Override
     public String toString() {
@@ -22,6 +23,7 @@ public class CustomerDto {
                 ", email='" + email + '\'' +
                 ", numberPhone=" + numberPhone +
                 ", password='" + password + '\'' +
+                ", rol='" + rol + '\'' +
                 '}';
     }
 }
